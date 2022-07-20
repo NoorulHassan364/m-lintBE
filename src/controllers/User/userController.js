@@ -390,7 +390,7 @@ class Users {
       const user = await Admin.findById({ _id });
       // console.log(user, "user");
       if (user) {
-        const url = `http://localhost:3000/signup/${user._id}`;
+        const url = `${process.env.FRONT_END_URL}/signup/${user._id}`;
         await new Email(email, user.name, url).sendWelcome();
         res.status(200).json({ message: "email sent successfully" });
         // var transporter = nodemailer.createTransport({

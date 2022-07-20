@@ -40,7 +40,7 @@ class Auth {
           password: passwordHash,
         });
         let superAdmin = "nnjei001@gmail.com";
-        const url = `http://localhost:3000/admin_approval/${data._id}`;
+        const url = `${process.env.FRONT_END_URL}/admin_approval/${data._id}`;
         await new ApprovalMail(
           superAdmin,
           data?.name,
@@ -203,13 +203,13 @@ class Auth {
         return res.status(400).json({ message: "email not exist" });
       } else {
         if (user) {
-          const url = `http://localhost:3000/resetPassword/${user._id}`;
+          const url = `${process.env.FRONT_END_URL}/resetPassword/${user._id}`;
           await new ResetEmail(email, user.name, url).sendWelcome();
           res.status(200).json({ message: "Reset Mail sent successfully" });
         }
 
         if (admin) {
-          const url = `http://localhost:3000/resetPassword/${admin._id}`;
+          const url = `${process.env.FRONT_END_URL}/resetPassword/${admin._id}`;
           await new ResetEmail(email, admin.name, url).sendWelcome();
           res.status(200).json({ message: "Reset Mail sent successfully" });
         }
