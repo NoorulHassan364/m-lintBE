@@ -6,7 +6,7 @@ require("dotenv").config({ path: "src/.env" });
 
 const app = express();
 require("./src/db/connection");
-// const db = require("./models/index");
+// const db = require("./models/index");s
 const routes = require("./src/routes");
 
 app.use(cors());
